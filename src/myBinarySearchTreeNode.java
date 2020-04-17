@@ -6,9 +6,6 @@ class myBinarySearchTreeNode{
   myBinarySearchTreeNode(int inValue){
     // created a new node with empty child pointers
     this.myValue = inValue;
-    this.left = null;
-    this.right = null;
-
   }
   
   myBinarySearchTreeNode(int[] A){
@@ -40,19 +37,21 @@ class myBinarySearchTreeNode{
       }
       else left.insert(myValue);
     }
+    if(inValue == this.myValue){
+      System.out.println("Duplicates are not allowed");
+    }
   }
   
   public int height(){
      // This method recursively calculates the height of the entire (sub)tree.
      // This method will take O(n) time
     if(left != null){
-
+      return left.height() + 1;
     }
     if(right != null){
-
-
+      return right.height() + 1;
     }
-     return -1;
+     else return -1;
   }
   
   public int depth(int search) {
@@ -62,10 +61,14 @@ class myBinarySearchTreeNode{
     // Additionally, remember that the depth is the number of nodes on the path from a node to the root
     // (i.e. the number of the recursive calls).
     if (search < this.myValue) {
-      return 1 + left.depth(search);
+      if (left == null) {
+        return -1;
+      } else return left.depth(search) + 1;
     }
     if (search > this.myValue) {
-      return 1 + right.depth(search);
+      if (right == null) {
+        return -1;
+      } else return right.depth(search) + 1;
     }
     if (search == this.myValue) {
       return 0;
@@ -73,9 +76,15 @@ class myBinarySearchTreeNode{
     else return -1;
   }
 
-  public int size(){
+  public int size() {
     int sum = 0;
-  return sum;
+    if (left != null) {
+      return sum+1 + left.size();
+    }
+    if (right != null) {
+      return sum+1 + right.size();
+    }
+    else return 1;
   }
   
   // Utility function included so you can debug your solution. 
