@@ -6,6 +6,8 @@ class myBinarySearchTreeNode{
   myBinarySearchTreeNode(int inValue){
     // created a new node with empty child pointers
     this.myValue = inValue;
+    this.right = null;
+    this.left = null;
   }
   
   myBinarySearchTreeNode(int[] A){
@@ -45,13 +47,18 @@ class myBinarySearchTreeNode{
   public int height(){
      // This method recursively calculates the height of the entire (sub)tree.
      // This method will take O(n) time
+    int leftH = 0;
+    int rightH = 0;
     if(left != null){
-      return left.height() + 1;
+      leftH = 1+ left.height();
     }
     if(right != null){
-      return right.height() + 1;
+      rightH = 1 + right.height();
     }
-     else return -1;
+    if(leftH >= rightH){
+      return leftH+1;
+    }
+    else return rightH+1;
   }
   
   public int depth(int search) {
@@ -63,12 +70,14 @@ class myBinarySearchTreeNode{
     if (search < this.myValue) {
       if (left == null) {
         return -1;
-      } else return left.depth(search) + 1;
+      }
+      else return left.depth(search) + 1;
     }
     if (search > this.myValue) {
       if (right == null) {
         return -1;
-      } else return right.depth(search) + 1;
+      }
+      else return right.depth(search) + 1;
     }
     if (search == this.myValue) {
       return 0;
@@ -84,7 +93,7 @@ class myBinarySearchTreeNode{
     if (right != null) {
       return sum+1 + right.size();
     }
-    else return 1;
+    else return sum;
   }
   
   // Utility function included so you can debug your solution. 
