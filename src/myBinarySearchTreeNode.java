@@ -27,17 +27,17 @@ class myBinarySearchTreeNode{
     //    * in the left subtree,
     //    * or in the right subtree.
     // If the value already exists in the tree, no action is taken.
-    if (inValue > myValue) {
+    if (inValue > this.myValue) {
       if (right == null) {
         right = new myBinarySearchTreeNode(inValue);
       }
       else right.insert(inValue);
     }
-    if (inValue < myValue) {
+    if (inValue < this.myValue) {
       if (left == null) {
         left = new myBinarySearchTreeNode(inValue);
       }
-      else left.insert(myValue);
+      else left.insert(inValue);
     }
     if(inValue == myValue){
       System.out.println("Duplicates are not allowed");
