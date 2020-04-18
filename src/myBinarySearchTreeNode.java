@@ -31,17 +31,16 @@ class myBinarySearchTreeNode{
       if (right == null) {
         right = new myBinarySearchTreeNode(inValue);
       }
-      else right.insert(inValue);
+      else{ right.insert(inValue);}
     }
     if (inValue < this.myValue) {
       if (left == null) {
         left = new myBinarySearchTreeNode(inValue);
       }
-      else left.insert(inValue);
+      else{ left.insert(inValue);}
     }
-    if(inValue == myValue){
+    else
       System.out.println("Duplicates are not allowed");
-    }
   }
   
   public int height(){
