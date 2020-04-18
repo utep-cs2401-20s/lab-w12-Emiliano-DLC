@@ -73,17 +73,13 @@ class myBinarySearchTreeNode{
       }
       else return left.depth(search) + 1;
     }
-
     if (search > this.myValue) {
       if (right == null) {
         return -1;
       }
       else return right.depth(search) + 1;
     }
-    if (search == this.myValue) {
-      return 0;
-    }
-    else return 0;
+    return 0;
   }
 
   public int size() {
